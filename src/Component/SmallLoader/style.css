@@ -1,0 +1,22 @@
+.loader-container {
+    width: 50px; /* Set the width to your desired size */
+    height: 50px; /* Set the height to your desired size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 19px;
+  }
+  
+  .loaderr {
+    width: 35px; /* Set the width of the loader */
+    height: 35px; /* Set the height of the loader */
+    border: 5px solid #4d5e69; /* Set the border size and color */
+    border-radius: 50%;
+    border-top: 4px solid #ffffff; /* Set the color of the loader */
+    animation: spin 1s linear infinite; /* Add a simple rotation animation */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up-container {
+    box-shadow: 0px 0px 5px black;
+    padding: 19px 39px;
+    width: 27%;
+}
+
+.sign-up-container span {
+    font-size: 33px;
+    font-weight: 700;
+}
+
+.sign-up-container input {
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+    width: 85%;
+    margin: 9px;
+    border: none;
+    outline: none;
+    padding: 1px 5px;
+}
+
+.sign-up-container button {
+    display: block;
+    margin: 19px auto;
+    width: 37%;
+    height: 5.5vh;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(128, 25, 207);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 21px;
+}

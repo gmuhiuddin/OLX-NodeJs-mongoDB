@@ -1,0 +1,110 @@
+.sell-container {
+    height: 85vh;
+    width: 100%;
+}
+
+.sell-form-container {
+    height: auto;
+    width: 89%;
+    margin: 0px auto;
+    text-align: left;
+    background-color: rgb(222, 222, 222);
+    padding: 19px 1px;
+}
+
+.main-container{
+    display: flex;
+}
+
+.sell-form-container input {
+    height: 4.5vh;
+    width: 89%;
+    border-radius: 9px;
+    outline: none;
+    border: none;
+    margin: 11px 19px;
+    font-size: 19px;
+}
+
+.sell-form-container select {
+    height: 7vh;
+    width: 89%;
+    border-radius: 9px;
+    outline: none;
+    border: none;
+    margin: 11px 19px;
+    font-size: 21px;
+}
+
+.sell-form-container textarea {
+    min-height: 15vh;
+    max-height: 15vh;
+    min-width: 89%;
+    max-width: 89%;
+    border-radius: 9px;
+    outline: none;
+    border: none;
+    margin: 11px 19px;
+    font-size: 19px;
+}
+
+.sell-form-container label {
+    margin: 9px 19px;
+    font-size: 27px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#thumbnail-image, #first-image, #second-image, #third-image, #fourth-image {
+    display: none;
+}
+
+.inputs-container {
+    width: 43%
+}
+
+.image-container {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container label {
+    margin: 3px 59px !important;
+    text-align: center;
+}
+
+.thumbnail-image-label, .first-image-label, .second-image-label, .third-image-label, .fourth-image-label {
+    font-size: 25px !important;
+    background-color: rgb(255, 238, 0);
+    padding: 11px 13px;
+    border-radius: 11px;
+    width: 70%;
+}
+
+.image-container img {
+    margin: 9px auto;
+    display: block;
+    max-width: 25vw;
+}
+
+.submit-btn{
+    display: block;
+    margin: 0 auto;
+    height: 7vh;
+    width: 35%;
+    font-size: 29px;
+    cursor: pointer;
+    border-radius: 15px;
+    outline: none;
+    border: 1px solid gray;
+}
+
+.important-txt{
+    color: rgb(231, 23, 23);
+}
+
+.add-multiple-images-conatiner{
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,101 @@
+.navbar {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0px 1px 3px black;
+  background-color: white;
+}
+
+.logo {
+  height: 99px;
+  width: 99px;
+  border-radius: 50%;
+  margin-left: 59px;
+  cursor: pointer;
+}
+
+.select-container {
+  height: 45px;
+  width: 29%;
+  background-color: white;
+  outline: none;
+  font-size: 21px;
+  border: 3px solid #002f34;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 49px;
+}
+
+.select {
+  width: 87%;
+  height: 41px;
+  background-color: white;
+  outline: none;
+  font-size: 21px;
+  border-radius: 5px;
+  border: none;
+  margin-left: 7px;
+  padding: 5px 3px;
+}
+
+.input {
+  width: 45%;
+  height: 41px;
+  border-radius: 5px;
+  background-color: white;
+  outline: none;
+  font-size: 21px;
+  border: 3px solid #002f34;
+  padding: 3px 3px;
+}
+
+.search-icon {
+  font-size: 25px !important;
+  background-color: #002f34;
+  padding: 13px 15px;
+  border-radius: 5px;
+  color: white;
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+.login-txt{
+  font-size: 25px;
+  font-weight: 600;
+  margin-left: 29px;
+  text-decoration:underline;
+  cursor: pointer;
+  margin-right: 29px;
+}
+
+.login-txt:hover{
+  text-decoration:none;
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: 19px;
+  margin-top: 5px;
+}
+
+.btn-container img {
+  width: 119px; /* Set the width of the image as needed */
+  height: auto; /* Maintain aspect ratio */
+  position: absolute;
+  cursor: pointer;
+}
+
+.btn-container span {
+  font-size: 23px;
+  font-weight: 500;
+  margin-right: 3px;
+  position: relative;
+  cursor: pointer;
+}

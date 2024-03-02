@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.login-container {
+    box-shadow: 1px 1px 7px black;
+    padding: 19px 79px;
+    padding: 19px 39px;
+    width: 27%;
+}
+
+.login-container span {
+    font-size: 35px;
+    font-weight: 500;
+}
+
+.login-container input {
+    display: block;
+    margin: 0 auto;
+    width: 79%;
+    height: 4.5vh;
+    border-radius: 9px;
+    padding: 1px 9px;
+    box-shadow: 0px 0px 5px rgb(98, 94, 94);
+    border: 1px solid rgb(98, 94, 94);
+    outline: none;
+}
+
+.login-container button {
+    display: block;
+    margin: 11px auto;
+    padding: 11px 25px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(128, 25, 207);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2.9vh;
+}
+
+.forgot-pass-txt{
+    display: block;
+    text-align: left;
+    font-size: 3vh;
+    cursor: pointer;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}

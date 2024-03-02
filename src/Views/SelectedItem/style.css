@@ -1,0 +1,82 @@
+.container {
+    height: 100vh;
+    width: 100%;
+}
+
+.user-info-container {
+    width: 89%;
+    padding: 11px 5px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 2.5px gray;
+}
+
+.user-image {
+    border-radius: 50%;
+    height: 99px;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 25px !important;
+}
+
+.txt {
+    font-size: 20px;
+    text-align: left;
+    display: block;
+    margin: 3px 0px;
+}
+
+.chat-btn,
+.show-phone-numer-btn {
+    width: 89%;
+    height: 55px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 550;
+    font-size: 23px;
+}
+
+.show-phone-numer-btn {
+    background-color: #002f34;
+    color: white;
+}
+
+.chat-btn {
+    color: #002f34;
+    background-color: white;
+    border: 3px solid #002f34;
+}
+
+.locaiton-container {
+    width: 89%;
+    /* height: 100%; */
+    padding: 15px 5px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 2.5px gray;
+}
+
+.detail-container {
+    width: 61%;
+    margin-left: 43px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 2.5px gray;
+}
+
+.heart {
+    transition: 500ms;
+    height: 37px;
+    margin-top: 5px;
+    margin-right: 11px;
+    cursor: pointer;
+}
+
+.clicked-heart {
+    transition: 500ms;
+    height: 45px;
+    margin-top: 2.5px;
+    margin-right: 9px;
+    cursor: pointer;
+}

@@ -1,0 +1,24 @@
+.small-navbar{
+    height: 79px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 29px;
+    box-shadow: 0px 0px 5px rgb(185, 184, 184);
+    background-color: rgb(248, 247, 247);
+}
+
+.back-btn{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+}
+
+.olx-image{
+    margin-left: 19px;
+    height: 59px;
+    cursor: pointer;
+}

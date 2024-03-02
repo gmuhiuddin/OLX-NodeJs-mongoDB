@@ -1,0 +1,31 @@
+.star-rating {
+  display: flex;
+  align-items: center;
+  margin-left: 11px;
+}
+
+.star {
+  width: 37px;
+  height: 37px;
+  background-color: #ddd;
+  margin-right: 5px;
+  border-radius: 50%;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.full {
+  background-color: #ffd700; /* Color for filled stars */
+}
+
+.half {
+  background: linear-gradient(90deg, #ffd700 50%, #ddd 50%); /* Gradient for half-filled star */
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px #ffd700;
+  }
+  to {
+    box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700;
+  }
+}

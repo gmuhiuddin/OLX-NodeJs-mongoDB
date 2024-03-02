@@ -1,0 +1,79 @@
+.chat-container {
+    height: 85vh;
+    width: 75%;
+    margin: 0 auto;
+    border-radius: 9px;
+}
+
+.chat-container form {
+    display: flex;
+    align-items: center;
+    padding: 11px;
+    background-color: rgb(193, 193, 193);
+}
+
+.chat-container form input {
+    padding: 11px 5px;
+    font-size: 23px;
+    width: 93%;
+    border-radius: 9px;
+    outline: none;
+    border: none;
+}
+
+.chat-container form label i {
+    font-size: 29px;
+    margin: 5px 19px;
+    cursor: pointer;
+}
+
+.users-chats-container {
+    height: 87%;
+    background-color: rgb(239, 239, 239);
+    border-radius: 9px;
+    display: flex;
+    width: 100%;
+    overflow: scroll;
+    flex-direction: column;
+}
+
+.userChat {
+    background-color: rgb(158, 230, 158);
+    max-width: 55%;
+    overflow-wrap: break-word;
+    margin-left: auto;
+    margin-right: 15px;
+    margin-top: 11px;
+    display: block;
+    text-align: left;
+    padding: 3px 7px;
+    font-size: 19px;
+    border-radius: 9px;
+
+}
+
+.anotherUserChat {
+    background-color: rgb(176, 169, 169);
+    max-width: 55%;
+    overflow-wrap: break-word;
+    margin-right: auto;
+    margin-left: 15px;
+    padding: 3px 7px;
+    font-size: 19px;
+    margin-top: 11px;
+    display: block;
+    border-radius: 9px;
+    text-align: left;
+}
+
+.chat-time {
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 5px;
+    display: block;
+    text-align: right;
+}
+
+.user-messsage {
+    font-size: 23px;
+}
