@@ -119,11 +119,10 @@ const addMultiImagesInDatabase = async (image, imageNum) => {
 const addImageInDatabase = async (image) => {
   const productId = await getProductId();
 
-  let storageRef = ref(storage, `productImage/${productId}`);
-
-  await uploadBytes(storageRef, image);
-  const url = await getDownloadURL(storageRef);
-  return url;
+  const res = await fetch(`https://olx-clone-api.up.railway.app/imgtourl/${image}`);
+const data = await res.json()
+console.log(data);
+  return 'url';
 };
 
 const addDateForAdds = async (addInfo, userId) => {
