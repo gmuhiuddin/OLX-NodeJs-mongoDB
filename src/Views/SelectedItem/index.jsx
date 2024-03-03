@@ -8,9 +8,8 @@ import './style.css';
 import ImageScroll from '../../Component/ImagesScrollGrid';
 import heartImg from '../../Component/Carts/image-PhotoRoom.png-PhotoRoom-removebg-preview.png';
 import likedHeartImg from '../../Component/Carts/image-PhotoRoom.png-PhotoRoom__1_-removebg-preview.png'
-import { getDateFromDb } from '../../Config/firebase';
+import { getDateFromDb, addToCart, removeFromCart, getDataOfAddToCart } from '../../Config/mongoDb';
 import { MapForDetailPage } from '../../Component/Maps';
-import { addToCart, removeFromCart, getDataOfAddToCart } from '../../Config/firebase';
 
 function SeletedItem() {
 

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import './style.css'
-import { login } from '../../Config/firebase'
+import { login } from '../../Config/mongoDb'
 import { setUser, removeUser } from '../../store/userInfoSlice';
 
 function Login() {

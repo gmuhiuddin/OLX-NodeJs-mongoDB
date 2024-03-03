@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getDateFromDb } from '../../Config/firebase';
+import { getDateFromDb } from '../../Config/mongoDb';
 import './style.css';
 import Loader from '../Loader';
 import CategoryCartsContainer from '../../Component/Category-carts-container';

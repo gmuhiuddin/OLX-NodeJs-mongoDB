@@ -1,29 +1,9 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, createUserWithEmailAndPassword, signOut, sendPasswordResetEmail } from "firebase/auth";
-import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
-import { getFirestore, getDocs, setDoc, getDoc, collection, addDoc, query, doc, where, onSnapshot, serverTimestamp, orderBy, updateDoc } from "firebase/firestore";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBRoL0wtWFQpsLsOR51GvN3nCgoX8IEzgY",
-  authDomain: "olx-clone-b4869.firebaseapp.com",
-  projectId: "olx-clone-b4869",
-  storageBucket: "olx-clone-b4869.appspot.com",
-  messagingSenderId: "517440342860",
-  appId: "1:517440342860:web:0db7f06a31809991b61de9",
-  measurementId: "G-WNG1M7XXGW"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
-const storage = getStorage(app);
-
 const getDateFromDb = async (id) => {
   if (id) {
 
     const res = await fetch(`https://olx-clone-api.up.railway.app/products/${id}`)
     const result = await res.json();
-
+    
     return result.data;
   }
   else {
@@ -37,7 +17,7 @@ const getDateFromDb = async (id) => {
 const getUserInfo = async (id) => {
   const userInfoRes = await fetch(`https://olx-clone-api.up.railway.app/userinfo/${id}`);
   const resultOfUserInfo = await userInfoRes.json();
-
+  
   return resultOfUserInfo;
 };
 
@@ -102,27 +82,23 @@ const getProductId = async () => {
 };
 
 const updateProductId = async (id) => {
-  await fetch(`https://olx-clone-api.up.railway.app/productid/put/${id}`);
+  const data = await fetch(`https://olx-clone-api.up.railway.app/productid/${id}`);
 };
 
-const addMultiImagesInDatabase = async (image, imageNum) => {
+const makeImageUrl = async (image) => {
+  const reader = new FileReader();
 
-  const productId = await getProductId();
+  const url = new Promise(resolve => {
+    reader.addEventListener('load', () => {
+      resolve(reader.result);
+    });
+  });
+  
+  reader.readAsDataURL(image);
 
-  let storageRef = ref(storage, `productImages/${imageNum}/${productId}`);
+  const imageUrl = await url;
 
-  await uploadBytes(storageRef, image);
-  const url = await getDownloadURL(storageRef);
-  return url;
-};
-
-const addImageInDatabase = async (image) => {
-  const productId = await getProductId();
-
-  const res = await fetch(`https://olx-clone-api.up.railway.app/imgtourl/${image}`);
-const data = await res.json()
-console.log(data);
-  return 'url';
+  return imageUrl;
 };
 
 const addDateForAdds = async (addInfo, userId) => {
@@ -132,14 +108,14 @@ const addDateForAdds = async (addInfo, userId) => {
   const discountPercentage = Math.round(Math.random() * 35);
   const rating = Math.floor(Math.random() * 5);
 
-  const userData = await getDoc(doc(db, 'userInfo', userId));
+  const userData = await getUserInfo(userId);
 
   const obj = {
     ...addInfo,
     discountPercentage: discountPercentage,
     rating: rating,
-    ...userData.data(),
-    userId: userData.id,
+    ...userData.data,
+    userId: userData.data._id,
     productId
   };
 
@@ -156,34 +132,34 @@ const addDateForAdds = async (addInfo, userId) => {
 
 const addUserMsg = async (msgInfo) => {
 
-  await addDoc(collection(db, 'usersChats'), {
-    ...msgInfo,
-    time: serverTimestamp()
-  });
+  // await addDoc(collection(db, 'usersChats'), {
+  //   ...msgInfo,
+  //   time: serverTimestamp()
+  // });
 
 };
 
 const getUsersMsg = async (chatId) => {
 
-  const msgRef = query(collection(db, 'usersChats'), orderBy("time"), where("chatId", "==", chatId));
+  // const msgRef = query(collection(db, 'usersChats'), orderBy("time"), where("chatId", "==", chatId));
 
-  const abc = new Promise((resolve, reject) => {
-    onSnapshot(msgRef, (data) => {
+  // const abc = new Promise((resolve, reject) => {
+  //   onSnapshot(msgRef, (data) => {
 
-      if (data.empty) {
-        reject('on Chats')
-      } else {
-        resolve(data.docs)
-      }
-    })
+  //     if (data.empty) {
+  //       reject('on Chats')
+  //     } else {
+  //       resolve(data.docs)
+  //     }
+  //   })
 
-  })
+  // })
 
-  return abc;
+  return 'abc';
 };
 
 const resetPass = async (email) => {
-  const res = sendPasswordResetEmail(auth, email);
+  // const res = sendPasswordResetEmail(auth, email);
 
   return res;
 };
@@ -249,4 +225,11 @@ const removeFromCart = async (id, userId) => {
 
 };
 
-export { getDateFromDb, login, signUp, addDateForAdds, getUsersMsg, addImageInDatabase, addUserMsg, resetPass, addMultiImagesInDatabase, addToCart, removeFromCart, getDataOfAddToCart };
+const updatePassword = async (email, newPassword) => {
+  const res = await fetch(`https://olx-clone-api.up.railway.app/user/updatepass/${email}/${newPassword}`);
+  const data = await res.json();
+
+  return data;
+};
+
+export { getDateFromDb, login, signUp, addDateForAdds, getUsersMsg, makeImageUrl, addUserMsg, resetPass, addToCart, removeFromCart, updatePassword, getDataOfAddToCart };

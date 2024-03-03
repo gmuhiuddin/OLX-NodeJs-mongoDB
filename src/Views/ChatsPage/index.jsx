@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './style.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
-import { addUserMsg, getUsersMsg } from '../../Config/firebase';
+import { addUserMsg, getUsersMsg } from '../../Config/mongoDb';
 import SmallLoader from '../../Component/SmallLoader';
 import { useSelector } from 'react-redux';
 

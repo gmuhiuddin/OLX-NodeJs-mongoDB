@@ -1,5 +1,5 @@
 import React from 'react';
-import { resetPass } from '../../Config/firebase';
+import { resetPass } from '../../Config/mongoDb';
 
 function PasswordResetPage() {
 

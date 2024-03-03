@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import heartImg from './image-PhotoRoom.png-PhotoRoom-removebg-preview.png';
 import likedHeartImg from './image-PhotoRoom.png-PhotoRoom__1_-removebg-preview.png';
 import StarRating from '../StartRating';
-import { addToCart, removeFromCart, getDataOfAddToCart } from '../../Config/firebase';
+import { addToCart, removeFromCart, getDataOfAddToCart } from '../../Config/mongoDb';
 import { useSelector } from 'react-redux';
 
 function Carts({ cartInfo }) {
