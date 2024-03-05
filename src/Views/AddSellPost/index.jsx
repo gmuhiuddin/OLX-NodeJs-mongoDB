@@ -115,7 +115,7 @@ const AddSellPost = () => {
                     {longitude && latitude ?
                         <MapForAddSell longitude={longitude} latitude={latitude} setLatitude={setLatitude} setLongitude={setLongitude} />
                         :
-                        <MapForAddSell longitude='24.8607' latitude='67.0011' setLatitude={setLatitude} setLongitude={setLongitude} />
+                        <MapForAddSell longitude='67.0011' latitude='24.8607' setLatitude={setLatitude} setLongitude={setLongitude} />
                     }
 
                     <br />
