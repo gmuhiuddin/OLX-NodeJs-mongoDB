@@ -12,11 +12,14 @@ const AddSellPost = () => {
     const [longitude, setLongitude] = useState();
     const res = useSelector(res => res.userSlice.userInfo)
     const navigate = useNavigate();
-
+    
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(coords => {
             setLatitude(coords.coords.latitude);
             setLongitude(coords.coords.longitude);
+        }, err => {
+            setLatitude('24.8607')
+            setLongitude('67.0011');
         });
     }, []);
     
@@ -112,10 +115,8 @@ const AddSellPost = () => {
                     <br />
                     <h1 style={{ textAlign: 'center' }}>Add your location</h1>
 
-                    {longitude && latitude ?
+                    {longitude && latitude &&
                         <MapForAddSell longitude={longitude} latitude={latitude} setLatitude={setLatitude} setLongitude={setLongitude} />
-                        :
-                        <MapForAddSell longitude='67.0011' latitude='24.8607' setLatitude={setLatitude} setLongitude={setLongitude} />
                     }
 
                     <br />
