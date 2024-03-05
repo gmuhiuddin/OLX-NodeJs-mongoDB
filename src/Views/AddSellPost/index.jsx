@@ -112,8 +112,10 @@ const AddSellPost = () => {
                     <br />
                     <h1 style={{ textAlign: 'center' }}>Add your location</h1>
 
-                    {longitude &&
+                    {longitude && latitude ?
                         <MapForAddSell longitude={longitude} latitude={latitude} setLatitude={setLatitude} setLongitude={setLongitude} />
+                        :
+                        <MapForAddSell longitude='24.8607' latitude='67.0011' setLatitude={setLatitude} setLongitude={setLongitude} />
                     }
 
                     <br />
