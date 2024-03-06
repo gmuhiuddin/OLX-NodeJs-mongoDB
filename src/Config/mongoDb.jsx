@@ -3,7 +3,7 @@ const getDateFromDb = async (id) => {
 
     const res = await fetch(`https://olx-clone-api.up.railway.app/products/${id}`)
     const result = await res.json();
-    
+
     return result.data;
   }
   else {
@@ -17,7 +17,7 @@ const getDateFromDb = async (id) => {
 const getUserInfo = async (id) => {
   const userInfoRes = await fetch(`https://olx-clone-api.up.railway.app/userinfo/${id}`);
   const resultOfUserInfo = await userInfoRes.json();
-  
+
   return resultOfUserInfo;
 };
 
@@ -93,7 +93,7 @@ const makeImageUrl = async (image) => {
       resolve(reader.result);
     });
   });
-  
+
   reader.readAsDataURL(image);
 
   const imageUrl = await url;
@@ -158,10 +158,22 @@ const getUsersMsg = async (chatId) => {
   return 'abc';
 };
 
-const resetPass = async (email) => {
-  // const res = sendPasswordResetEmail(auth, email);
+const sendEmail = async (email, otp) => {
 
-  return res;
+  const res = await fetch(`https://olx-clone-api.up.railway.app/user/sendemail/${email}/${otp}`)
+  const result = await res.json();
+
+  return result;
+};
+
+const resetPass = async (email, password) => {
+
+  const res = await fetch(`https://olx-clone-api.up.railway.app/user/updatepass/${email}/${password}`, {
+    method: "PUT"
+  })
+  const result = await res.json();
+
+  return result;
 };
 
 const getDataOfAddToCart = async (userId) => {
@@ -232,4 +244,4 @@ const updatePassword = async (email, newPassword) => {
   return data;
 };
 
-export { getDateFromDb, login, signUp, addDateForAdds, getUsersMsg, makeImageUrl, addUserMsg, resetPass, addToCart, removeFromCart, updatePassword, getDataOfAddToCart };
+export { getDateFromDb, login, signUp, addDateForAdds, getUsersMsg, makeImageUrl, addUserMsg, resetPass, addToCart, removeFromCart, updatePassword, sendEmail, getDataOfAddToCart };
