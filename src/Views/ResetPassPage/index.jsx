@@ -15,7 +15,7 @@ function PasswordResetPage() {
 
       if(!showPassInput){
         if (!otp) {
-          const code = Math.ceil(Math.random() * 9999);
+          const code = Math.ceil(Math.random() * 8999) + 1000;
   
           const res = await sendEmail(e.target[0].value, code);
   
