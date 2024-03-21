@@ -49,7 +49,7 @@ function Login() {
                         <br />
                         <button type="submit">Login</button>
                     </form>
-                    <a href='/passresetpage' className='forgot-pass-txt'>Forgot password?</a>
+                    <a href='/prp' className='forgot-pass-txt'>Forgot password?</a>
                     <p style={{ fontSize: 21 }}>You don`t have an account <a style={{ textDecoration: 'underline', color: 'rgb(128, 25, 207)', cursor: 'pointer' }} onClick={() => navigate('/signup')}>Sign Up</a></p>
                 </div>
             </div>

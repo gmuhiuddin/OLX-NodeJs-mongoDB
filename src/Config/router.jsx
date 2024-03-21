@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         element: <AddSellPost />,
       },
       {
-        path: "/passresetpage",
+        path: "/prp",
         element: <PasswordResetPage />,
       }
     ]
@@ -83,7 +83,7 @@ function Layout() {
 
     if (user) {
 
-      if (pathname == '/login' || pathname == '/signup' || pathname == '/passresetpage') {
+      if (pathname == '/login' || pathname == '/prp' || pathname == '/signup' || pathname == '/passresetpage') {
         navigate('/');
       };
 
