@@ -94,7 +94,7 @@ function PasswordResetPage() {
 
         if(e.target[2].value == e.target[3].value){
 
-          const res = await resetPass(e.target[0].value, e.target[3].value)
+          const res = await resetPass(e.target[0].value, e.target[3].value);
 
           if(res.complete){
             Swal.fire({
@@ -102,6 +102,8 @@ function PasswordResetPage() {
               text: "Password reset successfully",
               icon: "success"
             });
+
+            localStorage.removeItem('otp');
 
             navigate('/login');
 
@@ -149,9 +151,9 @@ function PasswordResetPage() {
             <br />
             {showPassInput &&
               <>
-                <input className="input" type="password" placeholder="Password" required />
+                <input className="input" minLength='8' type="password" placeholder="Password" required />
                 <br />
-                <input className="input" type="password" placeholder="Repeat password" required />
+                <input className="input" minLength='8' type="password" placeholder="Repeat password" required />
               </>
             }
             <button type="submit">{!showPassInput ? 'Send otp on email' : 'Reset password'}</button>
