@@ -31,7 +31,7 @@ function PasswordResetPage() {
   
   const resetForm = async (e) => {
     e.preventDefault();
-
+    
     try {
 
       if(!showPassInput){
@@ -45,7 +45,7 @@ function PasswordResetPage() {
             setEmail(e.target[0].value);
 
             localStorage.setItem('otp', JSON.stringify({
-              email: e.target[0].value,
+              email: e.target[0].value.replace(/^'+|'+$/g, ''),
               code,
               passChecked: false
             }));
@@ -97,6 +97,7 @@ function PasswordResetPage() {
           const res = await resetPass(e.target[0].value, e.target[3].value);
 
           if(res.complete){
+            
             Swal.fire({
               title: "Password reset successfully",
               text: "Password reset successfully",
@@ -108,10 +109,11 @@ function PasswordResetPage() {
             navigate('/login');
 
           }else{
+            
             Swal.fire({
               title: res.msg,
               text: res.msg,
-              icon: "success"
+              icon: "error"
             });
           }
           
@@ -141,7 +143,7 @@ function PasswordResetPage() {
 
           <form onSubmit={resetForm}>
             <br />
-            <input className="input" type="email" value={email} disabled={email && true} placeholder="Email" required />
+            <input className="input" type='email' value={email} disabled={email && true} placeholder="Email" required />
             <br />
             {passChecked ? 
             <input className="input" type='number' disabled={passChecked != null ? passChecked : true} value={otp} placeholder="One time password" required />

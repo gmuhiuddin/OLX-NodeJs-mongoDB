@@ -172,7 +172,7 @@ const resetPass = async (email, password) => {
     method: "PUT"
   })
   const result = await res.json();
-
+  
   return result;
 };
 
