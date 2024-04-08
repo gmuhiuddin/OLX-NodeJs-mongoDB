@@ -49,12 +49,11 @@ const Navbar = () => {
             <input className='input' placeholder='Find Cars, Mobiles Phone and more...' />
             <FontAwesomeIcon className='search-icon' icon={faMagnifyingGlass} />
 
-            <div style={{ display: 'flex', alignItems: 'center' }}>
               {loader ?
                 <SmallLoader /> :
                 userData ?
                   <div>
-                    <span onClick={() => setUserInfoCartView(!userInfoCartView)} style={{ cursor: 'pointer', fontSize: 25, marginLeft: 7, fontWeight: '500' }} >{userData.firstname + ' ' + userData.lastname}</span>
+                    <span onClick={() => setUserInfoCartView(!userInfoCartView)} style={{ cursor: 'pointer', fontSize: 23, display:"block", width: "199px", marginRight: 15, marginLeft: 5, overflowWrap: "break-word", fontWeight: '500' }} >{userData.firstname + ' ' + userData.lastname}</span>
                   </div>
                   :
                   <div>
@@ -70,7 +69,6 @@ const Navbar = () => {
                 <img src='https://www.olx.com.pk/assets/iconSellBorder_noinline.d9eebe038fbfae9f90fd61d971037e02.svg' />
                 <span style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><span style={{ fontSize: 37, marginBottom: 7 }}>+</span> SELL</span>
               </div>
-            </div>
 
           </div>
         </div>
