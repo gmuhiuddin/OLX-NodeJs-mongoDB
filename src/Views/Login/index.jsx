@@ -17,10 +17,11 @@ function Login() {
             if(result.data){
                 dispatch(setUser({
                     userId: result.data._id,
-                    userData: result.data,
                     user: true
                 }));
+
             navigate('/');
+            
             }else{
                 alert(result.msg)
             }

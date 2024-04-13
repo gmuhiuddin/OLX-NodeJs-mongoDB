@@ -8,25 +8,26 @@
   display: flex;
   font-size: 31px;
   font-weight: 700;
-    margin-left: 69px;
+  margin-left: 69px;
 }
 
 .small-categories-main-container {
   display: flex;
   margin-top: 9px;
   flex-wrap: wrap;
-    justify-content: center;
+  justify-content: center;
+  margin: 0 49px;
 }
 
 .small-category-container {
-    width: 135px;
+    width: 111px;
   padding: 7px;
   margin: 11px;
   cursor: pointer;
 }
 
 .small-category-container img:hover {
-    transition: 500ms;
+    transition: 400ms;
     width: 91%;
     margin-top: 3px;
     margin-left: 1.5px;
@@ -42,7 +43,7 @@
 
 .small-category-container span {
   overflow-wrap: break-word;
-    font-size: 1.5em;
+    font-size: 1.3em;
   font-weight: 700;
   color: rgb(35, 35, 35);
 }

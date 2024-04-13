@@ -24,7 +24,7 @@ function SmallNavbar({userData, loader}) {
                 }
             </div>
         </div>
-    )
+    );
 };
 
 export default SmallNavbar;

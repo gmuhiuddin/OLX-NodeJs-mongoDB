@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import Loader from "../Views/Loader";
 import { useSelector } from "react-redux";
 import PasswordResetPage from '../Views/ResetPassPage';
+import { getUserInfo } from "./mongoDb";
 
 const router = createBrowserRouter([
   {
@@ -68,16 +69,22 @@ function Layout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    
-    setUserData(res?.userData);
-    setUser(res?.user);
-    setLoader(false);
+
+    getUser();
 
   }, [res]);
   
   useEffect(() => {
     checkUser();
   }, [pathname, user]);
+
+  async function getUser (){
+    const userd = await getUserInfo(res?.userId);
+    
+    setUserData(userd.data);
+    setUser(res?.user);
+    setLoader(false);
+  };
 
   async function checkUser() {
 

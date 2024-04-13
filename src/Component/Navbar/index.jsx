@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import './style.css';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import UserInfoCart from '../UserInfoCart';
-import { useNavigate } from 'react-router-dom';
 import SmallLoader from '../SmallLoader';
-import { useSelector } from 'react-redux';
+import { getUserInfo } from '../../Config/mongoDb.jsx';
+import './style.css';
 
 const Navbar = () => {
 
@@ -16,15 +17,20 @@ const Navbar = () => {
   const navigate = useNavigate();
   
   useEffect(() => {
-    setUserData(res?.userData);
+
+    getUserData();
     
-    if (res?.userData) {
-      setLoader(false);
-    };
-    if(res?.userData == false){
-      setLoader(false);
-    };
   }, [res])
+
+const getUserData = async () => {
+  const userd = await getUserInfo(res?.userId);
+
+    setUserData(userd.data);
+    
+    if (res?.userId) {
+      setLoader(false);
+    };
+};
 
   return (
     <div>

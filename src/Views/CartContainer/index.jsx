@@ -3,29 +3,38 @@ import { getDateFromDb } from '../../Config/mongoDb';
 import './style.css';
 import Loader from '../Loader';
 import CategoryCartsContainer from '../../Component/Category-carts-container';
+import { useSelector } from 'react-redux';
+import { getDataOfAddToCart } from '../../Config/mongoDb';
 
 function CartContainer() {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
-
+    const res = useSelector(res => res.userSlice.userInfo);
+console.log(res);
     useEffect(() => {
         getProducts();
     }, []);
 
-    useEffect(() => {
-        checkTheCategories();
-    }, [products]);
-
     async function getProducts() {
         const result = await getDateFromDb();
-        
+        const dataOfCart = await getDataOfAddToCart(res.userId);
+
+        result.data.forEach(element => {
+
+            for (let i = 0; i < dataOfCart.length; i++) {
+
+                if (element._id == dataOfCart[i]) {
+                    element.liked = true;
+                };
+
+            };
+        });
+
         setProducts(result.data);
-    };
 
-    const checkTheCategories = () => {
-        let arr = [...categories];
-
-        products.forEach(res => {
+        let arr = [];
+        
+        result.data.forEach(res => {
             let alreadyExist = false;
 
             arr.forEach(result => {

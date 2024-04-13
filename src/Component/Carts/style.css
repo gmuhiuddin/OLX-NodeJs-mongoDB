@@ -1,5 +1,5 @@
 .carts {
-    width: 351px;
+    width: 301px;
     box-shadow: 0px 0px 3.5px rgb(126, 125, 125);
     margin: 19px 11px;
     border-radius: 11px;
@@ -8,7 +8,7 @@
 
 .thumbnail {
     width: 100%;
-    max-height: 299px;
+    max-height: 249px;
     border-top-left-radius: 11px;
     border-top-right-radius: 11px;
 }
@@ -43,7 +43,7 @@
 
 .tital-txt {
     display: block;
-    font-size: 25px;
+    font-size: 23px;
     width: 91%;
     margin: 5px 11px;
     overflow-wrap: break-word;

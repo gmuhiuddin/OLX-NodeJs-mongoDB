@@ -42,36 +42,33 @@ const signUp = async (name, fatherName, email, password) => {
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(
-      {
-        email,
-        password
-      }
-    )
+    body: JSON.stringify({
+      email,
+      password
+    })
   });
+  
   const result = await res.json();
 
-  const userInfoRes = await fetch('https://olx-clone-api.up.railway.app/userinfo/post', {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(
-      {
-        firstname: name,
-        lastname: fatherName,
-        userEmail: email,
-        userImg: "",
-        cartsIdForBasket: [],
-        _id: result.uid,
-        password
-      }
-    )
-  });
-
-  const resultOfUserInfo = await userInfoRes.json();
-
-  return resultOfUserInfo;
+    await fetch('https://olx-clone-api.up.railway.app/userinfo/post', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(
+        {
+          firstname: name,
+          lastname: fatherName,
+          userEmail: email,
+          userImg: "",
+          cartsIdForBasket: [],
+          _id: result.uid,
+          password
+        }
+      )
+    });
+    
+  return result.uid;
 };
 
 const getProductId = async () => {
@@ -172,13 +169,13 @@ const resetPass = async (email, password) => {
     method: "PUT"
   })
   const result = await res.json();
-  
+
   return result;
 };
 
 const getDataOfAddToCart = async (userId) => {
   const res = await getUserInfo(userId);
-
+  
   return res.data.cartsIdForBasket;
 };
 
@@ -244,4 +241,4 @@ const updatePassword = async (email, newPassword) => {
   return data;
 };
 
-export { getDateFromDb, login, signUp, addDateForAdds, getUsersMsg, makeImageUrl, addUserMsg, resetPass, addToCart, removeFromCart, updatePassword, sendEmail, getDataOfAddToCart };
+export { getDateFromDb, login, signUp, addDateForAdds, getUsersMsg, makeImageUrl, addUserMsg, resetPass, addToCart, removeFromCart, updatePassword, getUserInfo, sendEmail, getDataOfAddToCart };
