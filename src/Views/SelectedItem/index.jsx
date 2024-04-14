@@ -8,7 +8,7 @@ import './style.css';
 import ImageScroll from '../../Component/ImagesScrollGrid';
 import heartImg from '../../Component/Carts/image-PhotoRoom.png-PhotoRoom-removebg-preview.png';
 import likedHeartImg from '../../Component/Carts/image-PhotoRoom.png-PhotoRoom__1_-removebg-preview.png'
-import { getDateFromDb, addToCart, removeFromCart, getDataOfAddToCart } from '../../Config/mongoDb';
+import { getDateFromDb, addToCart, removeFromCart, getDataOfAddToCart, getLocationInWords } from '../../Config/mongoDb';
 import { MapForDetailPage } from '../../Component/Maps';
 
 function SeletedItem() {
@@ -32,6 +32,19 @@ function SeletedItem() {
 
     async function getProducts() {
         const res = await getDateFromDb(id);
+        try{
+            
+                const locationName = await getLocationInWords(product?.latitude, product?.longitude);
+                
+                res.location = locationName;
+
+                setLocation(locationName);
+            }
+            catch(error){() => {
+                console.error('Error fetching data:', error);
+                setLocation('err');
+            }};
+
         setProduct(res);
     };
 
@@ -61,20 +74,6 @@ function SeletedItem() {
             alert('Please login then you like the cart');
             navigate('/login');
         };
-    };
-
-    if(product){
-        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${product?.latitude}&lon=${product?.longitude}`)
-            .then(response => response.json())
-            .then(data => {
-                const locationName = data.address?.town + ", " + data.address?.city;
-
-                data.address ? setLocation(locationName) : setLocation('err');
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-                setLocation('err');
-            });
     };
 
     if (!product) {

@@ -1,31 +1,38 @@
-import './style.css';
-import { addDateForAdds, makeImageUrl } from '../../Config/mongoDb';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MapForAddSell } from '../../Component/Maps';
 import { useSelector } from 'react-redux';
+import { MapForAddSell } from '../../Component/Maps';
+import { addDateForAdds, makeImageUrl, getLocationInWords } from '../../Config/mongoDb';
+import './style.css';
 
 const AddSellPost = () => {
     const [imageLink, setImageLink] = useState();
     const [imagesLinks, setImagesLinks] = useState([]);
     const [latitude, setLatitude] = useState();
     const [longitude, setLongitude] = useState();
+    const [location, setLocation] = useState();
     const res = useSelector(res => res.userSlice.userInfo)
     const navigate = useNavigate();
-    
+
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition(coords => {
+        navigator.geolocation.getCurrentPosition(async coords => {
             setLatitude(coords.coords.latitude);
             setLongitude(coords.coords.longitude);
+
+            const data = await getLocationInWords(coords.coords.latitude, coords.coords.longitude);
+
+            setLocation(data);
+
         }, err => {
-            setLatitude('24.8607')
-            setLongitude('67.0011');
+            setLatitude('24.8607');
+            setLongitude('67.0069');
+            setLocation('Lyari Town, Karachi Division')
         });
     }, []);
-    
+
     const sellAddFucn = async (e) => {
         e.preventDefault();
-        
+
         if (!e.target[4].files[0] || !e.target[6].files[0] || !e.target[7].files[0] || !e.target[8].files[0] || !e.target[9].files[0]) {
             alert('Please enter thumbnail and multiple images');
         } else {
@@ -116,8 +123,10 @@ const AddSellPost = () => {
                     <h1 style={{ textAlign: 'center' }}>Add your location</h1>
 
                     {longitude && latitude &&
-                        <MapForAddSell longitude={longitude} latitude={latitude} setLatitude={setLatitude} setLongitude={setLongitude} />
+                        <MapForAddSell longitude={longitude} latitude={latitude} setLatitude={setLatitude} setLongitude={setLongitude} setLocation={setLocation} />
                     }
+
+                    <h3>location: {location}</h3>
 
                     <br />
 
@@ -136,7 +145,7 @@ const AddSellPost = () => {
                             <label className='first-image-label' htmlFor="first-image">Click here</label>
                             <input
                                 onChange={async (e) => {
-                                        const imageUrl = await makeImageUrl(e.target.files[0]);
+                                    const imageUrl = await makeImageUrl(e.target.files[0]);
 
                                     const imagess = [...imagesLinks];
                                     imagess[0] = imageUrl;

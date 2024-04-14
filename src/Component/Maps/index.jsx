@@ -1,15 +1,20 @@
 import React from 'react';
 import Map, { Marker } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import markerImage from './map-marker-icon-1366x2048-7u371uwd.png'
+import markerImage from './map-marker-icon-1366x2048-7u371uwd.png';
+import { getLocationInWords } from '../../Config/mongoDb';
 
-function MapForAddSell({ latitude, longitude, setLatitude, setLongitude }) {
 
-  const dragFunc = (e) => {
+function MapForAddSell({ latitude, longitude, setLatitude, setLongitude, setLocation }) {
 
+  const dragFunc = async (e) => {
     setLatitude(e.lngLat.lat);
 
     setLongitude(e.lngLat.lng);
+    
+    const data = await getLocationInWords(e.lngLat.lat, e.lngLat.lng);
+        
+        setLocation(data);
   };
 
   return (

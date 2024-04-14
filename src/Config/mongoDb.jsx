@@ -241,4 +241,11 @@ const updatePassword = async (email, newPassword) => {
   return data;
 };
 
-export { getDateFromDb, login, signUp, addDateForAdds, getUsersMsg, makeImageUrl, addUserMsg, resetPass, addToCart, removeFromCart, updatePassword, getUserInfo, sendEmail, getDataOfAddToCart };
+const getLocationInWords = async (latitude, longitude) => {
+  const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
+  const data = await res.json();
+
+  return data.address?.town + ", " + data.address?.city;
+};
+
+export { getDateFromDb, login, signUp, addDateForAdds, getUsersMsg, makeImageUrl, addUserMsg, resetPass, addToCart, removeFromCart, updatePassword, getUserInfo, sendEmail, getDataOfAddToCart, getLocationInWords };

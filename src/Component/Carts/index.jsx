@@ -13,7 +13,7 @@ function Carts({ cartInfo }) {
     const res = useSelector(res => res.userSlice.userInfo)
 
     let navigate = useNavigate();
-
+    
     let [isLiked, setIsLiked] = useState(liked);
     const dicountOutOf100Per = 100 - discountPercentage;
     const discountedPrice = price / 100 * dicountOutOf100Per;

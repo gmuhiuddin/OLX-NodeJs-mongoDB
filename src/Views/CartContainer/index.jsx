@@ -10,7 +10,7 @@ function CartContainer() {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const res = useSelector(res => res.userSlice.userInfo);
-console.log(res);
+    
     useEffect(() => {
         getProducts();
     }, []);
