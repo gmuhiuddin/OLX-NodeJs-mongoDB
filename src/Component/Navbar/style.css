@@ -32,7 +32,6 @@
 }
 
 .select-container {
-  height: 40px;
   width: 40%;
   background-color: white;
   outline: none;
@@ -58,7 +57,7 @@
 
 .input {
   width: 40%;
-  height: 35px;
+  height: 41px;
   border-radius: 5px;
   background-color: white;
   outline: none;
@@ -70,7 +69,7 @@
 .search-icon {
   font-size: 20px !important;
   background-color: #002f34;
-  padding: 12px 11px;
+  padding: 11px 13px;
   border-radius: 5px;
   color: white;
   margin-left: 3px;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { MapForAddSell } from '../../Component/Maps';
 import { addDateForAdds, makeImageUrl, getLocationInWords } from '../../Config/mongoDb';
 import './style.css';
@@ -120,13 +122,14 @@ const AddSellPost = () => {
                     </div>
 
                     <br />
+
                     <h1 style={{ textAlign: 'center' }}>Add your location</h1>
+
+                    <h3 style={{ marginLeft: 13 }}><FontAwesomeIcon style={{ color: '#002f34' }} icon={faLocationDot} />: {location}</h3>
 
                     {longitude && latitude &&
                         <MapForAddSell longitude={longitude} latitude={latitude} setLatitude={setLatitude} setLongitude={setLongitude} setLocation={setLocation} />
                     }
-
-                    <h3>location: {location}</h3>
 
                     <br />
 
