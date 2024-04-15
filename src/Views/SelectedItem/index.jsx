@@ -34,17 +34,16 @@ function SeletedItem() {
         const res = await getDateFromDb(id);
         try {
 
-            const locationName = await getLocationInWords(product?.latitude, product?.longitude);
+            const locationName = await getLocationInWords(res?.latitude, res?.longitude);
 
             res.location = locationName;
 
             setLocation(locationName);
+
         }
         catch (error) {
-            () => {
-                console.error('Error fetching data:', error);
-                setLocation('err');
-            }
+            console.error('Error fetching data:', error);
+            setLocation('err');
         };
 
         setProduct(res);
