@@ -27,6 +27,10 @@
     margin: 3px 0px;
 }
 
+.chat-btn:disabled {
+    cursor: not-allowed !important;
+}
+
 .chat-btn,
 .show-phone-numer-btn {
     width: 89%;

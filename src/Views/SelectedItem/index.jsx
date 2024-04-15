@@ -98,7 +98,7 @@ function SeletedItem() {
                         <button className='show-phone-numer-btn'><FontAwesomeIcon style={{ marginRight: 9, fontSize: 25 }} icon={faPhone} />Show Phone Number</button>
                         <br />
                         <br />
-                        <button onClick={() => product.userId ? navigate(`/chats/${product.id}`) : alert('User is not defined')} className='chat-btn'> <FontAwesomeIcon style={{ marginRight: 9, fontSize: 25 }} icon={faComments} />Chat</button>
+                        <button disabled={true} onClick={() => product.userId ? navigate(`/chats/${product.id}`) : alert('User is not defined')} className='chat-btn'> <FontAwesomeIcon style={{ marginRight: 9, fontSize: 25 }} icon={faComments} />Chat</button>
                     </div>
                     <br />
                     <br />

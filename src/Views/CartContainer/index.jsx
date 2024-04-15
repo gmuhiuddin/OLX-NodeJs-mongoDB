@@ -17,18 +17,20 @@ function CartContainer() {
 
     async function getProducts() {
         const result = await getDateFromDb();
-        const dataOfCart = await getDataOfAddToCart(res.userId);
-
-        result.data.forEach(element => {
-
-            for (let i = 0; i < dataOfCart.length; i++) {
-
-                if (element._id == dataOfCart[i]) {
-                    element.liked = true;
-                };
-
-            };
-        });
+        
+        if(res?.userId) {
+            const dataOfCart = await getDataOfAddToCart(res?.userId);
+                    result.data.forEach(element => {
+            
+                        for (let i = 0; i < dataOfCart.length; i++) {
+            
+                            if (element._id == dataOfCart[i]) {
+                                element.liked = true;
+                            };
+            
+                        };
+                    });
+        }else;
 
         setProducts(result.data);
 

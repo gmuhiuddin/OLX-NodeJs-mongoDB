@@ -1,7 +1,7 @@
-import './style.css';
-import { removeUser } from '../../store/userInfoSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { removeUser } from '../../store/userInfoSlice';
+import './style.css';
 
 function UserInfoCart({ userEmail, setUserInfoCartView }) {
 

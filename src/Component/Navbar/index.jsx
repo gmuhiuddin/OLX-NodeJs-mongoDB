@@ -15,22 +15,22 @@ const Navbar = () => {
   const [loader, setLoader] = useState(true);
   const res = useSelector(res => res.userSlice.userInfo);
   const navigate = useNavigate();
-  
+
   useEffect(() => {
 
     getUserData();
-    
+
   }, [res])
 
-const getUserData = async () => {
-  const userd = await getUserInfo(res?.userId);
+  const getUserData = async () => {
+    const userd = await getUserInfo(res?.userId);
 
     setUserData(userd.data);
-    
-    if (res?.userId) {
+
+    if (res) {
       setLoader(false);
     };
-};
+  };
 
   return (
     <div>
@@ -55,26 +55,26 @@ const getUserData = async () => {
             <input className='input' placeholder='Find Cars, Mobiles Phone and more...' />
             <FontAwesomeIcon className='search-icon' icon={faMagnifyingGlass} />
 
-              {loader ?
-                <SmallLoader /> :
-                userData ?
-                  <div>
-                    <span onClick={() => setUserInfoCartView(!userInfoCartView)} style={{ cursor: 'pointer', fontSize: 23, display:"block", width: "219px", marginRight: 15, marginLeft: 5, overflowWrap: "break-word", fontWeight: '500' }} >{userData.firstname + ' ' + userData.lastname}</span>
-                  </div>
-                  :
-                  <div>
-                    <span className='login-txt' onClick={() => {
-                      navigate('/login')
-                    }}>Login</span>
-                  </div>
-              }
+            {loader ?
+              <SmallLoader /> :
+              userData ?
+                <div>
+                  <span onClick={() => setUserInfoCartView(!userInfoCartView)} style={{ cursor: 'pointer', fontSize: 23, display: "block", width: "219px", marginRight: 15, marginLeft: 5, overflowWrap: "break-word", fontWeight: '500' }} >{userData.firstname + ' ' + userData.lastname}</span>
+                </div>
+                :
+                <div>
+                  <span className='login-txt' onClick={() => {
+                    navigate('/login')
+                  }}>Login</span>
+                </div>
+            }
 
-              <div onClick={() => {
-                userData ? navigate('/addsellpost') : navigate('/login')
-              }} className='btn-container'>
-                <img src='https://www.olx.com.pk/assets/iconSellBorder_noinline.d9eebe038fbfae9f90fd61d971037e02.svg' />
-                <span style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><span style={{ fontSize: 37, marginBottom: 7 }}>+</span> SELL</span>
-              </div>
+            <div onClick={() => {
+              userData ? navigate('/addsellpost') : navigate('/login')
+            }} className='btn-container'>
+              <img src='https://www.olx.com.pk/assets/iconSellBorder_noinline.d9eebe038fbfae9f90fd61d971037e02.svg' />
+              <span style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}><span style={{ fontSize: 37, marginBottom: 7 }}>+</span> SELL</span>
+            </div>
 
           </div>
         </div>
@@ -82,12 +82,6 @@ const getUserData = async () => {
       </nav>
       {userInfoCartView ? <span>
         <UserInfoCart setUserInfoCartView={setUserInfoCartView} userEmail={userData?.userEmail} />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
       </span>
         : ''}
     </div>
