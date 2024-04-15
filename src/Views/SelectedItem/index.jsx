@@ -32,33 +32,37 @@ function SeletedItem() {
 
     async function getProducts() {
         const res = await getDateFromDb(id);
-        try{
-            
-                const locationName = await getLocationInWords(product?.latitude, product?.longitude);
-                
-                res.location = locationName;
+        try {
 
-                setLocation(locationName);
-            }
-            catch(error){() => {
+            const locationName = await getLocationInWords(product?.latitude, product?.longitude);
+
+            res.location = locationName;
+
+            setLocation(locationName);
+        }
+        catch (error) {
+            () => {
                 console.error('Error fetching data:', error);
                 setLocation('err');
-            }};
+            }
+        };
 
         setProduct(res);
     };
 
     const checkTheCarts = async () => {
-        const result = await getDataOfAddToCart(res.userId);
+        if (res?.userId) {
+            const result = await getDataOfAddToCart(res.userId);
 
-        for (let i = 0; i < result.length; i++) {
+            for (let i = 0; i < result.length; i++) {
 
-            if (result[i] == id) {
-                setIsLiked(true);
-                break;
+                if (result[i] == id) {
+                    setIsLiked(true);
+                    break;
+                };
+
             };
-
-        };
+        } else;
     };
 
     const likeIsClickFunc = async () => {
@@ -79,7 +83,7 @@ function SeletedItem() {
     if (!product) {
         return <Loader />
     };
-    
+
     return (
         <div>
             <div className='container'>
@@ -87,7 +91,7 @@ function SeletedItem() {
                 <div style={{ width: '51%', display: 'flex', flexDirection: 'column', height: '79vh' }}>
                     <div className="user-info-container">
                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <img className='user-image' src={product?.userImg ? product?.userImg : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQLHZh0aF5Og2DF4G19yPVx_QGjXfaBByFZA&usqp=CAU'}alt='user-image' />
+                            <img className='user-image' src={product?.userImg ? product?.userImg : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQLHZh0aF5Og2DF4G19yPVx_QGjXfaBByFZA&usqp=CAU'} alt='user-image' />
                             <div>
                                 <span className='user-name txt'>{product?.firstname ? product.firstname + " " + product.lastname : 'Ghulam Muhiuddin'}</span>
                                 <span className='txt'>Member since in 2021</span>
@@ -106,7 +110,7 @@ function SeletedItem() {
                         <span style={{ fontSize: 33, fontWeight: '700', display: 'block', textAlign: 'left', marginLeft: 19 }}>Location</span>
                         <br />
                         <span style={{ fontSize: 25, display: 'block', textAlign: 'left', marginLeft: 19 }}><FontAwesomeIcon style={{ color: '#002f34' }} icon={faLocationDot} /> {location != 'err' && location}
-                        {location == 'err' && ' Malir, Karachi'}
+                            {location == 'err' && ' Malir, Karachi'}
                         </span>
                         <br />
 
