@@ -13,13 +13,15 @@ function CartContainer() {
     
     useEffect(() => {
         getProducts();
-    }, []);
+    }, [res]);
 
     async function getProducts() {
+
         const result = await getDateFromDb();
         
         if(res?.userId) {
             const dataOfCart = await getDataOfAddToCart(res?.userId);
+
                     result.data.forEach(element => {
             
                         for (let i = 0; i < dataOfCart.length; i++) {
@@ -65,7 +67,7 @@ function CartContainer() {
                 return <CategoryCartsContainer key={key} products={products} category={res} />
             })}
         </div>
-    )
+    );
 };
 
 export default CartContainer;

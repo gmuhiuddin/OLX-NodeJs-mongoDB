@@ -11,7 +11,7 @@ function UserInfoCart({ userEmail, setUserInfoCartView }) {
     async function logoutFunc() {
             dispatch(removeUser());
             setUserInfoCartView(false);
-            navigate('/');
+            window.location.reload();
     };
 
     return (

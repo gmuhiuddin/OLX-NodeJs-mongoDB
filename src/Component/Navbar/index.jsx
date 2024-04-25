@@ -17,10 +17,10 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-
     getUserData();
-
   }, [res])
+
+  console.log(userData);
 
   const getUserData = async () => {
     const userd = await getUserInfo(res?.userId);
@@ -81,17 +81,17 @@ const Navbar = () => {
         <br />
       </nav>
       {userInfoCartView ?
-      <>
-       <span>
-        <UserInfoCart setUserInfoCartView={setUserInfoCartView} userEmail={userData?.userEmail} />
-      </span>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      </>
+        <>
+          <span>
+            <UserInfoCart setUserInfoCartView={setUserInfoCartView} userEmail={userData?.userEmail} />
+          </span>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        </>
         : ''}
     </div>
   );

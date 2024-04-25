@@ -2,7 +2,6 @@ import React from 'react';
 import Carts from '../Carts';
 
 function CategoryCartsContainer({ products, category }) {
-
     const res = products.filter(res => res?.category == category);
 
     const category1stletter = category[0].toUpperCase();
@@ -18,7 +17,7 @@ function CategoryCartsContainer({ products, category }) {
                 })}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default CategoryCartsContainer;
