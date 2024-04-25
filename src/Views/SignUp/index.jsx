@@ -17,7 +17,7 @@ function SignUp() {
                 try {
                         const result = await signUp(e.target[0].value, e.target[1].value, e.target[2].value, e.target[3].value);
 
-                        if(result.data){
+                        if(result.uid){
                             dispatch(setUser({
                                 userId: result.uid,
                                 user: true

@@ -158,7 +158,7 @@ function PasswordResetPage() {
                 <input className="input" minLength='8' type="password" placeholder="Repeat password" required />
               </>
             }
-            <button type="submit">{!showPassInput ? 'Send otp on email' : 'Reset password'}</button>
+            <button type="submit">{!showPassInput ? otp ? "Check otp" : 'Send otp on email' : 'Reset password'}</button>
           </form>
         </div>
       </div>

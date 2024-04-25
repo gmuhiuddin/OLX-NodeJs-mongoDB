@@ -47,28 +47,28 @@ const signUp = async (name, fatherName, email, password) => {
       password
     })
   });
-  
+
   const result = await res.json();
 
-    await fetch('https://olx-clone-api.up.railway.app/userinfo/post', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(
-        {
-          firstname: name,
-          lastname: fatherName,
-          userEmail: email,
-          userImg: "",
-          cartsIdForBasket: [],
-          _id: result.uid,
-          password
-        }
-      )
-    });
-    
-  return result.uid;
+  await fetch('https://olx-clone-api.up.railway.app/userinfo/post', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(
+      {
+        firstname: name,
+        lastname: fatherName,
+        userEmail: email,
+        userImg: "",
+        cartsIdForBasket: [],
+        _id: result.uid,
+        password
+      }
+    )
+  });
+  
+  return result;
 };
 
 const getProductId = async () => {
@@ -175,7 +175,7 @@ const resetPass = async (email, password) => {
 
 const getDataOfAddToCart = async (userId) => {
   const res = await getUserInfo(userId);
-  
+
   return res.data.cartsIdForBasket;
 };
 
