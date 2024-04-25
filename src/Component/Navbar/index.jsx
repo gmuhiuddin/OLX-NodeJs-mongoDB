@@ -20,8 +20,6 @@ const Navbar = () => {
     getUserData();
   }, [res])
 
-  console.log(userData);
-
   const getUserData = async () => {
     const userd = await getUserInfo(res?.userId);
 

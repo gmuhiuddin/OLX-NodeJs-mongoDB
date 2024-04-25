@@ -1,12 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { removeUser } from '../../store/userInfoSlice';
 import './style.css';
 
 function UserInfoCart({ userEmail, setUserInfoCartView }) {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     async function logoutFunc() {
             dispatch(removeUser());
