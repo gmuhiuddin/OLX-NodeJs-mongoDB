@@ -16,34 +16,34 @@
   margin-top: 9px;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0 49px;
+  margin: 0 25px;
 }
 
 .small-category-container {
-    width: 121px;
+  width: 121px;
   padding: 7px;
   margin: 11px;
   cursor: pointer;
 }
 
 .small-category-container img:hover {
-    transition: 400ms;
-    width: 91%;
-    margin-top: 3px;
-    margin-left: 1.5px;
+  transition: 400ms;
+  width: 91%;
+  margin-top: 3px;
+  margin-left: 1.5px;
 }
 
 .small-category-container img {
   border-radius: 50%;
   margin: 0 auto;
   margin-left: 3px;
-    width: 85%;
+  width: 85%;
   margin-top: 5px;
 }
 
 .small-category-container span {
   overflow-wrap: break-word;
-    font-size: 1.3em;
+  font-size: 1.3em;
   font-weight: 700;
   color: rgb(35, 35, 35);
 }
