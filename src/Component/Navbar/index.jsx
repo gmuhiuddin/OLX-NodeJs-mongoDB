@@ -80,9 +80,18 @@ const Navbar = () => {
         </div>
         <br />
       </nav>
-      {userInfoCartView ? <span>
+      {userInfoCartView ?
+      <>
+       <span>
         <UserInfoCart setUserInfoCartView={setUserInfoCartView} userEmail={userData?.userEmail} />
       </span>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      </>
         : ''}
     </div>
   );

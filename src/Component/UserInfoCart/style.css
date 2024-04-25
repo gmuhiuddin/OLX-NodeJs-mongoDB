@@ -1,11 +1,10 @@
 .user-info-cart{
+    float: right;
+    clear: both;
     padding: 19px 15px;
     margin: 11px 11px;
     border-radius: 15px;
     box-shadow: 0px 0px 3px rgb(155, 155, 155);
-    /* width: 10%; */
-    /* width: 100%; */
-    /* max-width: 499px; */
 }
 
 .logout-anchor{
