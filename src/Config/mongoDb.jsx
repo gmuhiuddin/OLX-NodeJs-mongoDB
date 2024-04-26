@@ -23,7 +23,16 @@ const getUserInfo = async (id) => {
 
 const login = async (email, password) => {
 
-  const res = await fetch(`https://olx-clone-api.up.railway.app/user/login/${email}/${password}`);
+  const res = await fetch(`https://olx-clone-api.up.railway.app/user/login`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      email,
+      password
+    })
+  });
   const result = await res.json();
 
   if (result.data) {
