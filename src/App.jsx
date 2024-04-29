@@ -5,7 +5,8 @@ function App() {
 
   return (
     <div className="App">
-      <Router />
+      {/* <Router /> */}
+      <h1>Sorry, Web is under process</h1>
     </div>
   );
 };
