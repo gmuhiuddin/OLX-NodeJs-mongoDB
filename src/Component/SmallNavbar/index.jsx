@@ -18,7 +18,7 @@ function SmallNavbar({userData, loader}) {
             <div style={{ marginRight: 39 }}>
                 {loader ?
                     <SmallLoader /> :
-                    userData ? <span style={{ fontSize: 25, marginLeft: 7, fontWeight: '500' }} >{userData.firstname + ' ' + userData.lastname}</span> : <span className='login-txt' onClick={() => {
+                    userData.user ? <span style={{ fontSize: 25, marginLeft: 7, fontWeight: '500' }} >{userData.firstname + ' ' + userData.lastname}</span> : <span className='login-txt' onClick={() => {
                         navigate('/login')
                     }}>Login</span>
                 }

@@ -37,3 +37,8 @@
     cursor: pointer;
     font-size: 21px;
 }
+
+.sign-up-container button:disabled{
+    cursor: not-allowed;
+    background-color: rgb(152, 100, 193);
+}

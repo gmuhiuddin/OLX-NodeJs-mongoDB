@@ -23,7 +23,7 @@ const getUserInfo = async (id) => {
 
 const login = async (email, password) => {
 
-  const res = await fetch(`https://olx-clone-api.up.railway.app/user/login`, {
+  const res = await fetch('https://olx-clone-api.up.railway.app/user/login', {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -35,13 +35,11 @@ const login = async (email, password) => {
   });
   const result = await res.json();
 
-  if (result.data) {
-    const userInfoRes = await getUserInfo(result.data._id);
+  if (!result.uid) return { msg: result.msg };
 
-    return userInfoRes;
-  };
+  const userInfoRes = await getUserInfo(result.uid);
 
-  return result;
+  return userInfoRes;
 };
 
 const signUp = async (name, fatherName, email, password) => {
@@ -59,7 +57,9 @@ const signUp = async (name, fatherName, email, password) => {
 
   const result = await res.json();
 
-  await fetch('https://olx-clone-api.up.railway.app/userinfo/post', {
+  if (!result.uid) return { msg: result.msg };
+
+  const userInfoRes = await fetch('https://olx-clone-api.up.railway.app/userinfo/post', {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -76,8 +76,10 @@ const signUp = async (name, fatherName, email, password) => {
       }
     )
   });
-  
-  return result;
+
+  const userInfoResult = await userInfoRes.json();
+
+  return userInfoResult;
 };
 
 const getProductId = async () => {
@@ -257,4 +259,18 @@ const getLocationInWords = async (latitude, longitude) => {
   return data.address?.town + ", " + data.address?.city;
 };
 
-export { getDateFromDb, login, signUp, addDateForAdds, getUsersMsg, makeImageUrl, addUserMsg, resetPass, addToCart, removeFromCart, updatePassword, getUserInfo, sendEmail, getDataOfAddToCart, getLocationInWords };
+const logout = async () => {
+
+  const res = await fetch('https://olx-clone-api.up.railway.app/user/logout', {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+
+  const result = await res.json();
+
+  return result;
+};
+
+export { getDateFromDb, login, signUp, addDateForAdds, getUsersMsg, makeImageUrl, addUserMsg, resetPass, addToCart, removeFromCart, updatePassword, getUserInfo, sendEmail, getDataOfAddToCart, getLocationInWords, logout };

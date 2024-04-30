@@ -42,6 +42,11 @@
     font-size: 2.9vh;
 }
 
+.login-container button:disabled{
+    cursor: not-allowed;
+    background-color: rgb(151, 107, 185);
+}
+
 .forgot-pass-txt{
     display: block;
     text-align: left;

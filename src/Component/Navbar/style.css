@@ -85,6 +85,19 @@
   margin-left: 21px;
 }
 
+.user-name-txt{
+  cursor: pointer;
+   font-size: 23px;
+    display: block;
+   max-width: 219px;
+   width: 100%;
+   min-width: 119px;
+   margin-right: 15;
+   margin-left: 5;
+   overflow-wrap: break-word;
+   font-weight: 500;
+}
+
 .login-txt:hover {
   text-decoration: none;
 }

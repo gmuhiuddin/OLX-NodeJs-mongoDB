@@ -50,8 +50,8 @@ function SeletedItem() {
     };
 
     const checkTheCarts = async () => {
-        if (res?.userId) {
-            const result = await getDataOfAddToCart(res.userId);
+        if (res?.user) {
+            const result = await getDataOfAddToCart(res._id);
 
             for (let i = 0; i < result.length; i++) {
 
@@ -71,8 +71,8 @@ function SeletedItem() {
             setIsLiked(!isLiked);
 
             !isLiked ?
-                await addToCart(id, res?.userId)
-                : await removeFromCart(id, res?.userId);
+                await addToCart(id, res?._id)
+                : await removeFromCart(id, res?._id);
         } else {
             alert('Please login then you like the cart');
             navigate('/login');

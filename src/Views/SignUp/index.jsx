@@ -3,42 +3,66 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signUp } from '../../Config/mongoDb'
 import { setUser, removeUser } from '../../store/userInfoSlice';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 function SignUp() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const sbtBtn = useRef(null);
 
     async function signUporm(e) {
         e.preventDefault();
-        
+        sbtBtn.current.disabled = true;
+
         if (e.target[3].value == e.target[4].value) {
-    
-                try {
-                        const result = await signUp(e.target[0].value, e.target[1].value, e.target[2].value, e.target[3].value);
 
-                        if(result.uid){
-                            dispatch(setUser({
-                                userId: result.uid,
-                                user: true
-                            }));
+            try {
+                const result = await signUp(e.target[0].value, e.target[1].value, e.target[2].value, e.target[3].value);
 
-                        navigate('/');
-                            
-                        }else{
-                            alert(result.msg);
-                        }
+                if (result.data) {
 
-                    
-                } catch (error) {
-                    alert(error.message);
-                    dispatch(removeUser());
-                };
-    
-            } else {
-                e.target[4].style.boxShadow = '0px 0px 7px rgb(255, 0, 0)';
-                e.target[4].value = '';
-            }
+                    const data = { ...result.data };
+
+                    delete data.cartsIdForBasket;
+
+                    dispatch(setUser({
+                        ...data,
+                        user: true
+                    }));
+
+                    Swal.fire({
+                        title: "Successfully Logged in",
+                        text: "Successfully Logged in",
+                        icon: "success"
+                    });
+
+                    navigate('/');
+
+                } else {
+                    Swal.fire({
+                        title: "Error",
+                        text: result.msg,
+                        icon: "error"
+                    });
+                    sbtBtn.current.disabled = false;
+
+                }
+
+
+            } catch (error) {
+                Swal.fire({
+                    title: "Error",
+                    text: error.message,
+                    icon: "error"
+                });
+                sbtBtn.current.disabled = false;
+                dispatch(removeUser());
+            };
+
+        } else {
+            e.target[4].style.boxShadow = '0px 0px 7px rgb(255, 0, 0)';
+            e.target[4].value = '';
+        }
     };
 
     return (

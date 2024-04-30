@@ -21,13 +21,12 @@ const Navbar = () => {
   }, [res])
 
   const getUserData = async () => {
-    const userd = await getUserInfo(res?.userId);
-
-    setUserData(userd.data);
+    setUserData(res);
 
     if (res) {
       setLoader(false);
     };
+
   };
 
   return (
@@ -55,9 +54,9 @@ const Navbar = () => {
 
             {loader ?
               <SmallLoader /> :
-              userData ?
+              userData.user ?
                 <div>
-                  <span onClick={() => setUserInfoCartView(!userInfoCartView)} style={{ cursor: 'pointer', fontSize: 23, display: "block", width: "219px", marginRight: 15, marginLeft: 5, overflowWrap: "break-word", fontWeight: '500' }} >{userData.firstname + ' ' + userData.lastname}</span>
+                  <span onClick={() => setUserInfoCartView(!userInfoCartView)} className='user-name-txt' >{userData.firstname + ' ' + userData.lastname}</span>
                 </div>
                 :
                 <div>

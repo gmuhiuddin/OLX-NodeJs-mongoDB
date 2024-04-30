@@ -13,15 +13,19 @@ import SignUP from '../Views/SignUp';
 import AddSellPost from '../Views/AddSellPost';
 import ChatsPage from '../Views/ChatsPage';
 import Navbar from '../Component/Navbar';
+import PageNotFound from '../Views/PageNotFound';
 import CategoryNavbar from '../Component/Category-Navbar';
 import SmallNavbar from '../Component/SmallNavbar';
 import { useEffect, useState } from "react";
 import Loader from "../Views/Loader";
 import { useSelector } from "react-redux";
 import PasswordResetPage from '../Views/ResetPassPage';
-import { getUserInfo } from "./mongoDb";
 
 const router = createBrowserRouter([
+  {
+    path: "*",
+    element: <PageNotFound />
+  },
   {
     path: "/",
     element: <MainPage />
@@ -59,7 +63,6 @@ const router = createBrowserRouter([
 ]);
 
 function Layout() {
-
   const [userData, setUserData] = useState();
   const [user, setUser] = useState();
   const [loader, setLoader] = useState(true);
@@ -69,20 +72,16 @@ function Layout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-
     getUser();
-
   }, [res]);
-  
+
   useEffect(() => {
     checkUser();
   }, [pathname, user]);
 
-  async function getUser (){
-    const userd = await getUserInfo(res?.userId);
-    
-    setUserData(userd.data);
-    setUser(res?.user);
+  async function getUser() {
+    setUserData(res);
+    setUser(res.user);
     setLoader(false);
   };
 

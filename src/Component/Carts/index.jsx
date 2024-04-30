@@ -23,8 +23,8 @@ function Carts({ cartInfo }) {
 
             setIsLiked(!isLiked);
             !isLiked ?
-                await addToCart(_id, res?.userId)
-                : await removeFromCart(_id, res?.userId);
+                await addToCart(_id, res?._id)
+                : await removeFromCart(_id, res?._id);
         } else {
             alert('Please login then you like the cart');
             navigate('/login');

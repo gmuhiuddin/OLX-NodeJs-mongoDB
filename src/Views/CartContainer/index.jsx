@@ -10,34 +10,29 @@ function CartContainer() {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const res = useSelector(res => res.userSlice.userInfo);
-    
+
     useEffect(() => {
         getProducts();
-    }, [res]);
+    }, [res.user]);
 
     async function getProducts() {
 
         const result = await getDateFromDb();
-        
-        if(res?.userId) {
-            const dataOfCart = await getDataOfAddToCart(res?.userId);
 
-                    result.data.forEach(element => {
-            
-                        for (let i = 0; i < dataOfCart.length; i++) {
-            
-                            if (element._id == dataOfCart[i]) {
-                                element.liked = true;
-                            };
-            
-                        };
-                    });
-        }else;
+        if (res.user) {
+            const dataOfCarts = await getDataOfAddToCart(res?._id);
+
+            result.data.forEach(element => {
+                if (dataOfCarts.includes(element._id)) {
+                    element.liked = true;
+                };
+            });
+        };
 
         setProducts(result.data);
 
         let arr = [];
-        
+
         result.data.forEach(res => {
             let alreadyExist = false;
 
