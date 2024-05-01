@@ -76,7 +76,7 @@ function Layout() {
   }, [res]);
 
   useEffect(() => {
-    checkUser();
+    checkPaths();
   }, [pathname, user]);
 
   async function getUser() {
@@ -85,7 +85,7 @@ function Layout() {
     setLoader(false);
   };
 
-  async function checkUser() {
+  async function checkPaths() {
 
     if (user) {
 

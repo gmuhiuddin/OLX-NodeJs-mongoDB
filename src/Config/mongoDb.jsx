@@ -23,7 +23,7 @@ const getUserInfo = async (id) => {
 
 const login = async (email, password) => {
 
-  const res = await fetch('https://olx-clone-api.up.railway.app/user/login', {
+  const res = await fetch('http://olx-clone-api.up.railway.app/user/login', {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -31,7 +31,8 @@ const login = async (email, password) => {
     body: JSON.stringify({
       email,
       password
-    })
+    }),
+    credentials: 'include'
   });
   const result = await res.json();
 
@@ -261,11 +262,12 @@ const getLocationInWords = async (latitude, longitude) => {
 
 const logout = async () => {
 
-  const res = await fetch('https://olx-clone-api.up.railway.app/user/logout', {
+  const res = await fetch('http://olx-clone-api.up.railway.app/user/logout', {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
-    }
+    },
+    credentials: "include"
   });
 
   const result = await res.json();

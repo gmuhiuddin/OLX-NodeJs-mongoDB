@@ -10,7 +10,7 @@ function UserInfoCart({ userEmail, setUserInfoCartView }) {
     async function logoutFunc() {
 
         const res = await logout()
-        
+
         if(res.msg == 'user logout successfully'){
             dispatch(removeUser());
             setUserInfoCartView(false);
