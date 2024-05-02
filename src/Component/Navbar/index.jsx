@@ -49,7 +49,7 @@ const Navbar = () => {
                 <option>Sindh, Pakistan</option>
               </select>
             </div>
-            <input className='input' placeholder='Find Cars, Mobiles Phone and more...' />
+            <input className='inp' placeholder='Find Cars, Mobiles Phone and more...' />
             <FontAwesomeIcon className='search-icon' icon={faMagnifyingGlass} />
 
             {loader ?

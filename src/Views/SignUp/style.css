@@ -5,14 +5,17 @@
 }
 
 .sign-up-container {
-    box-shadow: 0px 0px 5px black;
-    padding: 19px 39px;
-    width: 27%;
+    box-shadow: 1px 1px 7px black;
+    padding: 19px 33px;
+   margin: 0px 3px;
+   min-width: 299px;
+   width: 100%;
+   max-width: 399px;
 }
 
 .sign-up-container span {
-    font-size: 33px;
-    font-weight: 700;
+    font-size: 2.3em;
+    font-weight: 600;
 }
 
 .sign-up-container input {
@@ -22,6 +25,9 @@
     border: none;
     outline: none;
     padding: 1px 5px;
+    height: 29px;
+    font-size: 1.1em;
+    border-radius: 9px;
 }
 
 .sign-up-container button {
@@ -41,4 +47,14 @@
 .sign-up-container button:disabled{
     cursor: not-allowed;
     background-color: rgb(152, 100, 193);
+}
+
+.have-acc-txt {
+    font-size: 1.3em;
+}
+
+.have-acc-txt a {
+    text-decoration: underline;
+    color: rgb(128, 25, 207);
+    cursor: 'pointer';
 }

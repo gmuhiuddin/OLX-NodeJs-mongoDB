@@ -84,7 +84,7 @@ function SignUp() {
                         <br />
                         <button type="submit" >Sign up</button>
                     </form>
-                    <p style={{ fontSize: 21 }}>You have an account <a style={{ color: 'rgb(128, 25, 207)', textDecoration: 'underline', cursor: 'pointer' }} onClick={() => navigate('/login')} >Login</a></p>
+                    <p className='have-acc-txt'>You have an account <a onClick={() => navigate('/login')} >Login</a></p>
                 </div>
             </div>
         </div>

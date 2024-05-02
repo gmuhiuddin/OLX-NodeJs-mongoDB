@@ -43,7 +43,7 @@ function Login() {
                     text: result.msg,
                     icon: "error"
                 });
-        sbtBtn.current.disabled = false;
+                sbtBtn.current.disabled = false;
 
             }
         } catch (error) {
@@ -53,7 +53,7 @@ function Login() {
                 icon: "error"
             });
             dispatch(removeUser());
-        sbtBtn.current.disabled = false;
+            sbtBtn.current.disabled = false;
             e.target[1].value = '';
         };
     };
@@ -70,14 +70,14 @@ function Login() {
 
                     <form onSubmit={loginForm}>
                         <br />
-                        <input className="input" type="email" placeholder="Email" required />
+                        <input type="email" placeholder="Email" required />
                         <br />
-                        <input className="input" minLength="8" placeholder="Password" type="password" required />
+                        <input minLength="8" placeholder="Password" type="password" required />
                         <br />
                         <button ref={sbtBtn} type="submit">Login</button>
                     </form>
                     <a onClick={() => navigate('/prp')} className='forgot-pass-txt'>Forgot password?</a>
-                    <p style={{ fontSize: 21 }}>You don`t have an account <a style={{ textDecoration: 'underline', color: 'rgb(128, 25, 207)', cursor: 'pointer' }} onClick={() => navigate('/signup')}>Sign Up</a></p>
+                    <p className='dont-acc-txt'>You don`t have an account <a onClick={() => navigate('/signup')}>Sign Up</a></p>
                 </div>
             </div>
         </div>

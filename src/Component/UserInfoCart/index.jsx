@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { removeUser } from '../../store/userInfoSlice';
 import { logout } from '../../Config/mongoDb';
 import './style.css';
+import { useNavigate } from 'react-router-dom';
 
 function UserInfoCart({ userEmail, setUserInfoCartView }) {
 
@@ -11,11 +12,10 @@ function UserInfoCart({ userEmail, setUserInfoCartView }) {
 
         const res = await logout()
 
-        if(res.msg == 'user logout successfully'){
+        if (res.msg == 'user logout successfully') {
             dispatch(removeUser());
             setUserInfoCartView(false);
-            window.location.reload();
-        }else{
+        } else {
             console.log(res.msg);
         }
     };

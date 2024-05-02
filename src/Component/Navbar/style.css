@@ -9,7 +9,7 @@
     display: none !important;
   }
 
-  .input {
+  .inp {
     display: none;
   }
 }
@@ -55,7 +55,7 @@
   padding: 5px;
 }
 
-.input {
+.inp {
   width: 40%;
   height: 31px;
   border-radius: 5px;
@@ -129,7 +129,7 @@
 /* Media queries for responsiveness */
 @media only screen and (max-width: 768px) {
   .select-container,
-  .input {
+  .inp {
     width: 60%;
   }
   
@@ -140,7 +140,7 @@
 
 @media only screen and (max-width: 576px) {
   .select-container,
-  .input {
+  .inp {
     width: 70%;
   }
   

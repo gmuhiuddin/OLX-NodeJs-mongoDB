@@ -3,30 +3,33 @@
     justify-content: center;
     align-items: center;
     height: 80vh;
+    font-size: 17px;
 }
 
 .login-container {
     box-shadow: 1px 1px 7px black;
-    padding: 19px 79px;
-    padding: 19px 39px;
-    width: 27%;
+    padding: 19px 33px;
+    margin: 0px 3px;
+    min-width: 299px;
+    width: 100%;
+    max-width: 399px;
 }
 
 .login-container span {
-    font-size: 35px;
-    font-weight: 500;
+    font-size: 2.3em;
+    font-weight: 600;
 }
 
 .login-container input {
-    display: block;
-    margin: 0 auto;
-    width: 79%;
-    height: 4.5vh;
-    border-radius: 9px;
-    padding: 1px 9px;
-    box-shadow: 0px 0px 5px rgb(98, 94, 94);
-    border: 1px solid rgb(98, 94, 94);
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+    width: 85%;
+    margin: 9px;
+    border: none;
     outline: none;
+    padding: 1px 5px;
+    height: 29px;
+    font-size: 1.1em;
+    border-radius: 9px;
 }
 
 .login-container button {
@@ -39,20 +42,30 @@
     outline: none;
     border: none;
     cursor: pointer;
-    font-size: 2.9vh;
+    font-size: 1.3em;
 }
 
-.login-container button:disabled{
+.login-container button:disabled {
     cursor: not-allowed;
     background-color: rgb(151, 107, 185);
 }
 
-.forgot-pass-txt{
+.forgot-pass-txt {
     display: block;
     text-align: left;
-    font-size: 3vh;
+    font-size: 1.3em;
     cursor: pointer;
     font-weight: 500;
     color: rgb(0, 0, 0);
     text-decoration: none;
+}
+
+.dont-acc-txt {
+    font-size: 1.3em;
+}
+
+.dont-acc-txt a {
+    text-decoration: underline;
+    color: rgb(128, 25, 207);
+    cursor: 'pointer';
 }
