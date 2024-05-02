@@ -7,10 +7,10 @@
 .sign-up-container {
     box-shadow: 1px 1px 7px black;
     padding: 19px 33px;
-   margin: 0px 3px;
-   min-width: 299px;
-   width: 100%;
-   max-width: 399px;
+    margin: 0px 3px;
+    min-width: 299px;
+    width: 100%;
+    max-width: 399px;
 }
 
 .sign-up-container span {
@@ -41,12 +41,17 @@
     outline: none;
     border: none;
     cursor: pointer;
-    font-size: 21px;
+    font-size: 1.3em;
+    transition: transform 0.5s ease;
 }
 
-.sign-up-container button:disabled{
+.sign-up-container button:disabled {
     cursor: not-allowed;
     background-color: rgb(152, 100, 193);
+}
+
+.sign-up-container button:active {
+    transform: scale(0.8);
 }
 
 .have-acc-txt {
@@ -56,5 +61,5 @@
 .have-acc-txt a {
     text-decoration: underline;
     color: rgb(128, 25, 207);
-    cursor: 'pointer';
+    cursor: pointer;
 }

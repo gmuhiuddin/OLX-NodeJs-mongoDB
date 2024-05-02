@@ -77,6 +77,7 @@ function Login() {
                         <button ref={sbtBtn} type="submit">Login</button>
                     </form>
                     <a onClick={() => navigate('/prp')} className='forgot-pass-txt'>Forgot password?</a>
+                    <br />
                     <p className='dont-acc-txt'>You don`t have an account <a onClick={() => navigate('/signup')}>Sign Up</a></p>
                 </div>
             </div>

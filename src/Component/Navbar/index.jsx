@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import UserInfoCart from '../UserInfoCart';
 import SmallLoader from '../SmallLoader';
-import { getUserInfo } from '../../Config/mongoDb.jsx';
 import './style.css';
 
 const Navbar = () => {

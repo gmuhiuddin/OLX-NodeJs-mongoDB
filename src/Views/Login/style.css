@@ -43,6 +43,7 @@
     border: none;
     cursor: pointer;
     font-size: 1.3em;
+    transition: transform 0.5s ease;
 }
 
 .login-container button:disabled {
@@ -50,14 +51,20 @@
     background-color: rgb(151, 107, 185);
 }
 
+.login-container button:active {
+    transform: scale(0.8);
+}
+
 .forgot-pass-txt {
-    display: block;
     text-align: left;
     font-size: 1.3em;
     cursor: pointer;
     font-weight: 500;
     color: rgb(0, 0, 0);
     text-decoration: none;
+    float: left;
+    clear: both;
+    margin: 5px 0px;
 }
 
 .dont-acc-txt {
@@ -67,5 +74,5 @@
 .dont-acc-txt a {
     text-decoration: underline;
     color: rgb(128, 25, 207);
-    cursor: 'pointer';
+    cursor: pointer;
 }

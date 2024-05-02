@@ -15,10 +15,10 @@ const counterSlice = createSlice({
     },
     removeUser: state => {
       state.userInfo = {
-          user: false,
-          userData: false,
-          userId: null
-        }
+        user: false,
+        userData: false,
+        userId: null
+      }
     }
   }
 });
