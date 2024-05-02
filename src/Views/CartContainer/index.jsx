@@ -13,7 +13,12 @@ function CartContainer() {
 
     useEffect(() => {
         getProducts();
-    }, [res.user]);
+    }, [res]);
+
+    useEffect(() => {
+        setProducts([]);
+        getProducts();
+    }, [res.user])
 
     async function getProducts() {
 

@@ -277,4 +277,17 @@ const logout = async () => {
   return result;
 };
 
-export { getDateFromDb, login, signUp, addDateForAdds, getUsersMsg, makeImageUrl, addUserMsg, resetPass, addToCart, removeFromCart, updatePassword, getUserInfo, sendEmail, getDataOfAddToCart, getLocationInWords, logout };
+const checkUser = async () => {
+  const res = await fetch('https://olx-clone-api.up.railway.app/user/checktoken', {
+    headers: {
+      "Content-Type": "application/json"
+    },
+    credentials: "include"
+  });
+
+  const result = await res.json();
+
+  return result;
+};
+
+export { getDateFromDb, login, signUp, addDateForAdds, getUsersMsg, makeImageUrl, addUserMsg, resetPass, addToCart, removeFromCart, updatePassword, getUserInfo, sendEmail, getDataOfAddToCart, getLocationInWords, logout, checkUser };

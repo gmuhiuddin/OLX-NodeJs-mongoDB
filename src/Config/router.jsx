@@ -18,8 +18,10 @@ import CategoryNavbar from '../Component/Category-Navbar';
 import SmallNavbar from '../Component/SmallNavbar';
 import { useEffect, useState } from "react";
 import Loader from "../Views/Loader";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PasswordResetPage from '../Views/ResetPassPage';
+import { checkUser, logout } from "./mongoDb";
+import { removeUser } from "../store/userInfoSlice";
 
 const router = createBrowserRouter([
   {
@@ -27,63 +29,78 @@ const router = createBrowserRouter([
     element: <PageNotFound />
   },
   {
-    path: "/",
-    element: <MainPage />
-  },
-  {
-    path: "/",
-    element: <Layout />,
+    element: <MainLayout />,
     children: [
       {
-        path: "/item/:id",
-        element: <CartSelected />,
+        path: "/",
+        element: <MainPage />
       },
       {
-        path: "/chats/:productId",
-        element: <ChatsPage />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/signup",
-        element: <SignUP />,
-      },
-      {
-        path: "/addsellpost",
-        element: <AddSellPost />,
-      },
-      {
-        path: "/prp",
-        element: <PasswordResetPage />,
+        path: "/",
+        element: <Layout />,
+        children: [
+          {
+            path: "/item/:id",
+            element: <CartSelected />,
+          },
+          {
+            path: "/chats/:pdtOwnerId",
+            element: <ChatsPage />,
+          },
+          {
+            path: "/login",
+            element: <Login />,
+          },
+          {
+            path: "/signup",
+            element: <SignUP />,
+          },
+          {
+            path: "/addsellpost",
+            element: <AddSellPost />,
+          },
+          {
+            path: "/prp",
+            element: <PasswordResetPage />,
+          }
+        ]
       }
     ]
   }
 ]);
 
-function Layout() {
-  const [userData, setUserData] = useState();
-  const [user, setUser] = useState();
-  const [loader, setLoader] = useState(true);
-  const { pathname } = useLocation();
-  const { anotherUserId } = useParams();
-  const res = useSelector(res => res.userSlice.userInfo);
-  const navigate = useNavigate();
+function MainLayout() {
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getUser();
-  }, [res]);
+  }, [window.location.pathname])
+
+  const getUser = async () => {
+    const result = await checkUser();
+
+    if (!result.uid) {
+      dispatch(removeUser());
+    };
+  };
+
+  return (
+    <Outlet />
+  );
+};
+
+function Layout() {
+  const { pathname } = useLocation();
+  const { pdtOwnerId } = useParams();
+  const res = useSelector(res => res.userSlice.userInfo);
+  const navigate = useNavigate();
+
+  const { user } = res;
 
   useEffect(() => {
     checkPaths();
   }, [pathname, user]);
-
-  async function getUser() {
-    setUserData(res);
-    setUser(res.user);
-    setLoader(false);
-  };
 
   async function checkPaths() {
 
@@ -93,25 +110,19 @@ function Layout() {
         navigate('/');
       };
 
-    } else if (user == false) {
+    } else {
 
-      if (pathname == '/addsellpost' || pathname == `/chats/${anotherUserId}`) {
+      if (pathname == '/addsellpost' || pathname == `/chats/${pdtOwnerId}`) {
         navigate('/');
       };
 
-    }
+    };
 
-  };
-
-  if (user === undefined) {
-    return (
-      <Loader />
-    )
   };
 
   return (
     <div>
-      <SmallNavbar loader={loader} userData={userData} />
+      <SmallNavbar userData={res} />
       <Outlet />
     </div>
   );
