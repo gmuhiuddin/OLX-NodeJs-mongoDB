@@ -32,8 +32,9 @@ const login = async (email, password) => {
       email,
       password
     }),
-    credentials: 'include'
+    credentials: "include"
   });
+
   const result = await res.json();
 
   if (!result.uid) return { msg: result.msg };
@@ -54,7 +55,7 @@ const signUp = async (name, fatherName, email, password) => {
       email,
       password
     }),
-    credentials: 'include'
+    credentials: "include"
   });
 
   const result = await res.json();
@@ -268,7 +269,7 @@ const logout = async () => {
     headers: {
       "Content-Type": "application/json"
     },
-    credentials: 'include'
+    credentials: "include"
   });
 
   const result = await res.json();

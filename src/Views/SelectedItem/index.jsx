@@ -32,6 +32,7 @@ function SeletedItem() {
 
     async function getProducts() {
         const res = await getDateFromDb(id);
+        
         try {
 
             const locationName = await getLocationInWords(res?.latitude, res?.longitude);

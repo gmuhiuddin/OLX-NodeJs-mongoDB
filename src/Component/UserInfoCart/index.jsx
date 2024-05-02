@@ -2,7 +2,6 @@ import { useDispatch } from 'react-redux';
 import { removeUser } from '../../store/userInfoSlice';
 import { logout } from '../../Config/mongoDb';
 import './style.css';
-import { useNavigate } from 'react-router-dom';
 
 function UserInfoCart({ userEmail, setUserInfoCartView }) {
 
