@@ -53,7 +53,8 @@ const signUp = async (name, fatherName, email, password) => {
     body: JSON.stringify({
       email,
       password
-    })
+    }),
+    credentials: 'include'
   });
 
   const result = await res.json();
