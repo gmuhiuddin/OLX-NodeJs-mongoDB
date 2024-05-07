@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import Swal from 'sweetalert2/dist/sweetalert2.all.min.js';
 import { login } from '../../Config/mongoDb'
 import { setUser, removeUser } from '../../store/userInfoSlice';

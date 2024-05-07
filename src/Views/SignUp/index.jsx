@@ -1,9 +1,9 @@
-import './style.css'
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { signUp } from '../../Config/mongoDb'
 import { setUser, removeUser } from '../../store/userInfoSlice';
-import { useRef, useState } from 'react';
+import './style.css'
 
 function SignUp() {
     const navigate = useNavigate();
@@ -45,7 +45,6 @@ function SignUp() {
                         icon: "error"
                     });
                     sbtBtn.current.disabled = false;
-
                 }
 
 
@@ -55,12 +54,14 @@ function SignUp() {
                     text: error.message,
                     icon: "error"
                 });
+
                 sbtBtn.current.disabled = false;
                 dispatch(removeUser());
             };
 
         } else {
             e.target[4].style.boxShadow = '0px 0px 7px rgb(255, 0, 0)';
+            sbtBtn.current.disabled = false;
             e.target[4].value = '';
         }
     };
