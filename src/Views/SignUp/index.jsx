@@ -82,7 +82,7 @@ function SignUp() {
                         <br />
                         <input className="input" onChange={(e) => e.target.style.boxShadow = '0px 0px 7px rgb(0, 0, 0)'} minlength="8" placeholder="Repeat Password" type="password" required />
                         <br />
-                        <button type="submit" >Sign up</button>
+                        <button ref={sbtBtn} type="submit" >Sign up</button>
                     </form>
                     <p className='have-acc-txt'>You have an account <a onClick={() => navigate('/login')} >Login</a></p>
                 </div>

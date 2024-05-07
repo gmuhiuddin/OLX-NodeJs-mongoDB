@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Swal from 'sweetalert2/dist/sweetalert2.all.min.js';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import { sendEmail, resetPass } from '../../Config/mongoDb';
@@ -10,6 +10,7 @@ function PasswordResetPage() {
   const [otp, setOtp] = useState(null);
   const [email, setEmail] = useState(null);
   const [passChecked, setPassChecked] = useState(null);
+  const sbtBtn = useRef(null);
 
   const navigate = useNavigate();
 
@@ -31,6 +32,7 @@ function PasswordResetPage() {
   
   const resetForm = async (e) => {
     e.preventDefault();
+    sbtBtn.current.disabled = true;
     
     try {
 
@@ -57,7 +59,8 @@ function PasswordResetPage() {
             });
   
             setOtp(code);
-  
+
+            sbtBtn.current.disabled = false;
             e.target[0].disabled = true;
             e.target[1].disabled = false;
           } else {
@@ -66,6 +69,8 @@ function PasswordResetPage() {
               text: "Sorry, we couldn't find that email address.",
               icon: "error"
             });
+
+            sbtBtn.current.disabled = false;
           };
         }else{
   
@@ -77,7 +82,8 @@ function PasswordResetPage() {
               code: otp,
               passChecked: true
             }));
-    
+
+            sbtBtn.current.disabled = false;
             e.target[0].disabled = true;
             e.target[1].disabled = true;
             
@@ -85,10 +91,12 @@ function PasswordResetPage() {
             Swal.fire({
               title: "Incorrect Otp",
               text: 'Incorrect Otp',
-              icon: "error" // You can use "warning" as well
+              icon: "error"
             });
-          };
 
+            e.target[1].value = '';
+            sbtBtn.current.disabled = false;
+          };
         };
       }else{
 
@@ -115,10 +123,13 @@ function PasswordResetPage() {
               text: res.msg,
               icon: "error"
             });
+            
+          sbtBtn.current.disabled = false;
           }
           
         }else{
           e.target[3].value = '';
+          sbtBtn.current.disabled = false;
         };
       };
 
@@ -128,6 +139,8 @@ function PasswordResetPage() {
         text: err.message,
         icon: "error" // You can use "warning" as well
       });
+      
+      sbtBtn.current.disabled = false;
     }
   };
   
@@ -158,7 +171,7 @@ function PasswordResetPage() {
                 <input className="input" minLength='8' type="password" placeholder="Repeat password" required />
               </>
             }
-            <button type="submit">{!showPassInput ? otp ? "Check otp" : 'Send otp on email' : 'Reset password'}</button>
+            <button ref={sbtBtn} type="submit">{!showPassInput ? otp ? "Check otp" : 'Send otp on email' : 'Reset password'}</button>
           </form>
         </div>
       </div>

@@ -26,6 +26,7 @@ const login = async (email, password) => {
   const res = await fetch('https://olx-clone-api.up.railway.app/user/login', {
     method: "PUT",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
@@ -49,6 +50,7 @@ const signUp = async (name, fatherName, email, password) => {
   const res = await fetch('https://olx-clone-api.up.railway.app/user/signup', {
     method: "POST",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
@@ -267,6 +269,7 @@ const logout = async () => {
   const res = await fetch('https://olx-clone-api.up.railway.app/user/logout', {
     method: "PUT",
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json"
     },
     credentials: "include"
@@ -280,6 +283,7 @@ const logout = async () => {
 const checkUser = async () => {
   const res = await fetch('https://olx-clone-api.up.railway.app/user/checktoken', {
     headers: {
+      Accept: "application/json",
       "Content-Type": "application/json"
     },
     credentials: "include"
